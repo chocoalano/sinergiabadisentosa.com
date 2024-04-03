@@ -117,7 +117,7 @@
             </div>
             <div class="w-lg-75 mx-lg-auto">
                 <div class="row">
-                    @foreach ($content['clients']['img-client'] as $k)
+                    @foreach ($content['clients']['img-client'] ?? [] as $k)
                         <div class="col text-center py-3">
                             <img class="avatar avatar-lg avatar-4x3" src="{{ asset('storage/'.$k) }}" alt="Logo">
                         </div>
