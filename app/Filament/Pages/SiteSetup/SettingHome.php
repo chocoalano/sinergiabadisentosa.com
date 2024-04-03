@@ -75,7 +75,7 @@ class SettingHome extends Page
                     ])->grow(false),
                 ])->from('md'),
                 Split::make([
-                    FileUpload::make('content-client-top')->multiple()->required(),
+                    FileUpload::make('content-client-top')->multiple(),
                     Section::make('Container content first')->schema([
                         TextInput::make('container-content-first.title'),
                         TextInput::make('container-content-first.paragraph'),
