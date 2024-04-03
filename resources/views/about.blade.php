@@ -37,7 +37,7 @@
             </div>
 
             <div class="row gx-3">
-                @foreach ($content['gallery']['image'] as $k)
+                @foreach ($content['gallery']['image'] ?? [] as $k)
                 <div class="col mb-3">
                     <div class="bg-img-start" style="background-image: url({{ asset('storage/'.$k) }}); height: 15rem;"></div>
                 </div>
@@ -49,7 +49,7 @@
         <!-- Feature Stats -->
         <div class="container content-space-2 content-space-lg-3">
             <div class="row justify-content-lg-center">
-                @foreach ($content['feature'] as $k)
+                @foreach ($content['feature'] ?? [] as $k)
                 <div class="col-sm-4 col-lg-3 mb-7 mb-sm-0">
                     <div class="text-center">
                         <h2 class="display-4">{{ $k['value'] }}</h2>
