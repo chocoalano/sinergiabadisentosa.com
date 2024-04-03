@@ -67,9 +67,9 @@
             <div class="container pb-3 pb-lg-5">
                 <div class="w-lg-75 mx-lg-auto">
                     <div class="row">
-                        @foreach ($content['content-client-top'] as $k)
+                        @foreach ($content['content-client-top'] ?? [] as $k)
                             <div class="col text-center py-3">
-                                <img class="avatar avatar-lg avatar-4x3" src="{{ asset('storage/'.$k) }}" alt="Logo">
+                                <img class="avatar avatar-lg avatar-4x3" src="{{ asset('storage/' . $k) }}" alt="Logo">
                             </div>
                         @endforeach
                     </div>
@@ -99,13 +99,14 @@
                                 <g>
                                     <defs>
                                         <path id="circleImgID2" d="M225,448.7L225,448.7C101.4,448.7,1.3,348.5,1.3,225l0,0C1.2,101.4,101.4,1.3,225,1.3l0,0
-                                    c123.6,0,223.7,100.2,223.7,223.7l0,0C448.7,348.6,348.5,448.7,225,448.7z" />
+                                        c123.6,0,223.7,100.2,223.7,223.7l0,0C448.7,348.6,348.5,448.7,225,448.7z" />
                                     </defs>
                                     <clipPath id="circleImgID1">
                                         <use xlink:href="#circleImgID2" />
                                     </clipPath>
                                     <g clip-path="url(#circleImgID1)">
-                                        <image width="450" height="450" xlink:href="{{ asset('storage/'.$content['container-content-first']['figure']['image_first']) }}">
+                                        <image width="450" height="450"
+                                            xlink:href="{{ asset('storage/' . $content['container-content-first']['figure']['image_first']) }}">
                                         </image>
                                     </g>
                                 </g>
@@ -125,13 +126,14 @@
                                 <g>
                                     <defs>
                                         <path id="circleImgID4" d="M260,515h-5C114.2,515,0,400.8,0,260v-5C0,114.2,114.2,0,255,0h5c140.8,0,255,114.2,255,255v5
-                                    C515,400.9,400.8,515,260,515z" />
+                                        C515,400.9,400.8,515,260,515z" />
                                     </defs>
                                     <clipPath id="circleImgID3">
                                         <use xlink:href="#circleImgID4" />
                                     </clipPath>
                                     <g clip-path="url(#circleImgID3)">
-                                        <image width="515" height="515" xlink:href="{{ asset('storage/'.$content['container-content-first']['figure']['image_second']) }}"
+                                        <image width="515" height="515"
+                                            xlink:href="{{ asset('storage/' . $content['container-content-first']['figure']['image_second']) }}"
                                             transform="matrix(1 0 0 1 1.639390e-02 2.880859e-02)"></image>
                                     </g>
                                 </g>
@@ -157,13 +159,14 @@
                                 <g>
                                     <defs>
                                         <path id="circleImgID6" d="M385.2,770.4L385.2,770.4c212.7,0,385.2-172.5,385.2-385.2l0,0C770.4,172.5,597.9,0,385.2,0l0,0
-                                    C172.5,0,0,172.5,0,385.2l0,0C0,597.9,172.4,770.4,385.2,770.4z" />
+                                        C172.5,0,0,172.5,0,385.2l0,0C0,597.9,172.4,770.4,385.2,770.4z" />
                                     </defs>
                                     <clipPath id="circleImgID5">
                                         <use xlink:href="#circleImgID6" />
                                     </clipPath>
                                     <g clip-path="url(#circleImgID5)">
-                                        <image width="900" height="900" xlink:href="{{ asset('storage/'.$content['container-content-first']['figure']['image_thirth']) }}"
+                                        <image width="900" height="900"
+                                            xlink:href="{{ asset('storage/' . $content['container-content-first']['figure']['image_thirth']) }}"
                                             transform="matrix(1 0 0 1 -64.8123 -64.8055)"></image>
                                     </g>
                                 </g>
@@ -177,12 +180,13 @@
         {{-- container-content-second::start --}}
         <div class="container content-space-t-2 content-space-t-lg-3">
             <div class="row justify-content-lg-center">
-                @foreach ($content['container-content-second'] as $k)
+                @foreach ($content['container-content-second'] ?? [] as $k)
                     <div class="col-md-6 col-lg-5 mb-3 mb-md-7">
                         <div class="d-flex pe-lg-5" data-aos="fade-up">
                             <div class="flex-shrink-0">
                                 <span class="svg-icon text-primary">
-                                    <img src="{{ asset('storage/'.$k['svg']) }}" alt="" width="70" height="70"/>
+                                    <img src="{{ asset('storage/' . $k['svg']) }}" alt="" width="70"
+                                        height="70" />
                                 </span>
                             </div>
                             <div class="flex-grow-1 ms-4">
@@ -202,17 +206,21 @@
                 <p>{{ $content['container-content-thirth']['description'] }}</p>
             </div>
             <div class="row gx-3 mb-5 mb-md-9">
-                @foreach ($products as $k => $v)
-                    <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-                        <a class="card card-transition h-100" href="{{ route('product.show', Str::slug($v->title)) }}">
-                            <img class="card-img-top" src="{{ asset('storage/' . $v->image) }}" alt="Image Description">
-                            <div class="card-body">
-                                <span class="card-subtitle text-primary">{{ ucfirst($v->category) }}</span>
-                                <h5 class="card-text lh-base">{{ ucfirst(Str::limit($v->title, 20)) }}</h5>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
+                @if (!is_null($products))
+                    @foreach ($products as $k => $v)
+                        <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
+                            <a class="card card-transition h-100"
+                                href="{{ route('product.show', Str::slug($v->title)) }}">
+                                <img class="card-img-top" src="{{ asset('storage/' . $v->image) }}"
+                                    alt="Image Description">
+                                <div class="card-body">
+                                    <span class="card-subtitle text-primary">{{ ucfirst($v->category) }}</span>
+                                    <h5 class="card-text lh-base">{{ ucfirst(Str::limit($v->title, 20)) }}</h5>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
             </div>
             <div class="text-center">
                 <div class="card card-info-link card-sm">
@@ -230,9 +238,9 @@
                 <h2>{{ $content['container-content-fourth']['title'] }}</h2>
             </div>
             <div class="row justify-content-center text-center">
-                @foreach ($content['container-content-fourth']['img-client'] as $k)
+                @foreach ($content['container-content-fourth']['img-client'] ?? [] as $k)
                     <div class="col-4 col-sm-3 col-md-2 py-3">
-                        <img class="avatar avatar-lg avatar-4x3 avatar-centered" src="{{ asset('storage/'.$k) }}"
+                        <img class="avatar avatar-lg avatar-4x3 avatar-centered" src="{{ asset('storage/' . $k) }}"
                             alt="Logo">
                     </div>
                 @endforeach

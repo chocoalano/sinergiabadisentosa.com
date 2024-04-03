@@ -19,7 +19,7 @@ class SettingArticle extends Page
     public ?array $formData = [];
     public function mount(): void
     {
-        $json_string = file_get_contents('../page-content.json');
+        $json_string = file_get_contents('../sinergiabadisentosa.com/page-content.json');
         $json_array = json_decode($json_string, true);
         $loadData = $json_array["page-article"];
         $arr= [
