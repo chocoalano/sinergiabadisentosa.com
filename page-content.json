@@ -18,41 +18,5 @@
                 "link": ""
             }]
         }
-    },
-    "page-services": {
-        "title-page": "services",
-        "keywords-seo": "services",
-        "description-seo": "services",
-        "gallery": {
-            "title": "Design-led and user-centric strategies can impact people's life.",
-            "image-1": "01HS86JQVT3486RPFKR03TYQVS.jpg",
-            "image-2": "01HS86JQVZZMBQ2V8VDBW1GEKX.jpg"
-        },
-        "icon-blocks": {
-            "text-cap": "What we do",
-            "h2-title": "Since 2007, we have helped 25 companies launch over 1k incredible products"
-        },
-        "clients": {
-            "title": "As seen on...",
-            "img-client": ["01HS86JQW2CH16JAFFQJT1NCS9.svg", "01HS86JQW5KXXBXEVG4HM96QSX.svg", "01HS86JQW8SD16TEEYXZXWANAX.svg"]
-        }
-    },
-    "page-article": {
-        "title-page": "articles",
-        "keywords-seo": "articles",
-        "description-seo": "articles",
-        "jumbotron": {
-            "title": "Newsroom Articles",
-            "description": "Latest updates and Hand-picked resources."
-        }
-    },
-    "page-product": {
-        "title-page": "product",
-        "keywords-seo": "product",
-        "description-seo": "product",
-        "jumbotron": {
-            "title": "Product Projects",
-            "description": "Latest updates and Hand-picked resources."
-        }
     }
 }
