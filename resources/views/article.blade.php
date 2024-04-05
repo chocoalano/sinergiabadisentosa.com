@@ -112,7 +112,7 @@
                                     <h3 class="card-title">
                                         <a class="text-dark" href="{{ route('article.show', $v->slug) }}">{{ ucfirst($v->title) }}</a>
                                     </h3>
-                                    <div class="card-text">{{ ucfirst(Str::limit($v->content, 100)) }}</div>
+                                    <div class="card-text">{!! Str::limit($v->content, 100) !!}</div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="d-flex align-items-center">
