@@ -21,231 +21,285 @@
                 duration: 650,
                 once: true
             });
-            new HSToggleSwitch('.js-toggle-switch')
+            HSCore.components.HSTyped.init('.js-typedjs')
+            var sliderThumbs = new Swiper('.js-swiper-thumbs', {
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+                history: false,
+                breakpoints: {
+                    480: {
+                        slidesPerView: 2,
+                        spaceBetween: 15,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 15,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 15,
+                    },
+                },
+                on: {
+                    'afterInit': function(swiper) {
+                        swiper.el.querySelectorAll('.js-swiper-pagination-progress-body-helper')
+                            .forEach($progress => $progress.style.transitionDuration =
+                                `${swiper.params.autoplay.delay}ms`)
+                    }
+                }
+            });
+            var sliderMain = new Swiper('.js-swiper-main', {
+                effect: 'fade',
+                autoplay: true,
+                loop: true,
+                thumbs: {
+                    swiper: sliderThumbs
+                }
+            })
         })()
     </script>
 @endsection
 @section('main')
     <main id="content" role="main">
-        {{-- jumbotron::start --}}
-        <div class="position-relative bg-primary overflow-hidden">
-            <div class="container position-relative zi-2 content-space-3 content-space-md-5">
-                <div class="w-md-75 w-xl-65 text-center mx-md-auto">
-                    <div class="mb-7">
-                        <h1 class="display-4 text-white mb-4">{{ $content['jumbotron']['title'] }}</h1>
-                        <p class="lead text-white mb-4">{{ $content['jumbotron']['description'] }}</p>
-                    </div>
-                </div>
-            </div>
-            <figure class="position-absolute top-0 start-0 w-65">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1246 1078">
-                    <g opacity=".4">
-                        <linearGradient id="doubleEllipseTopLeftID1" gradientUnits="userSpaceOnUse" x1="2073.5078"
-                            y1="1.7251" x2="2273.4375" y2="1135.5818" gradientTransform="matrix(-1 0 0 1 2600 0)">
-                            <stop offset="0.4976" style="stop-color:#282828" />
-                            <stop offset="1" style="stop-color:#282828" />
-                        </linearGradient>
-                        <polygon fill="url(#doubleEllipseTopLeftID1)" points="519.8,0.6 0,0.6 0,1078 863.4,1078   " />
-                        <linearGradient id="doubleEllipseTopLeftID2" gradientUnits="userSpaceOnUse" x1="1717.1648"
-                            y1="3.779560e-05" x2="1717.1648" y2="644.0417" gradientTransform="matrix(-1 0 0 1 2600 0)">
-                            <stop offset="1.577052e-06" style="stop-color:#282828" />
-                            <stop offset="1" style="stop-color:#282828" />
-                        </linearGradient>
-                        <polygon fill="url(#doubleEllipseTopLeftID2)" points="519.7,0 1039.4,0.6 1246,639.1 725.2,644   " />
-                    </g>
-                </svg>
-            </figure>
-            <div class="shape shape-bottom zi-1" style="margin-bottom: -.125rem">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1920 100.1">
-                    <path fill="#fff" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"></path>
-                </svg>
-            </div>
-        </div>
-        {{-- jumbotron::end --}}
-        {{-- content-client-top::start --}}
-        <div class="border-bottom">
-            <div class="container pb-3 pb-lg-5">
-                <div class="w-lg-75 mx-lg-auto">
+        <!-- Hero -->
+        <div class="d-lg-flex position-relative">
+            <div class="container d-lg-flex align-items-lg-center content-space-t-3 content-space-lg-0 min-vh-lg-100">
+                <!-- Heading -->
+                <div class="w-100">
                     <div class="row">
-                        @foreach ($content['content-client-top'] ?? [] as $k)
-                            <div class="col text-center py-3">
-                                <img class="avatar avatar-lg avatar-4x3" src="{{ asset('storage/' . $k) }}" alt="Logo">
+                        <div class="col-lg-5">
+                            <div class="mb-5">
+                                <h1 class="display-4 mb-3">
+                                    {{ ucfirst($content['hero-content']['title']) }}
+                                    <span class="text-primary text-highlight-warning">
+                                        <span class="js-typedjs"
+                                            data-hs-typed-options='{
+                            "strings": ["OEM and ODM.", "Private Label Manufacturer.", "Taste the Quality", "Feel the Difference", "Our Packaging"],
+                            "typeSpeed": 100,
+                            "loop": true,
+                            "backSpeed": 100,
+                            "backDelay": 5500
+                          }'></span>
+                                    </span>
+                                </h1>
+
+                                <p class="lead">{{ ucfirst($content['hero-content']['desc']) }}</p>
                             </div>
-                        @endforeach
+
+                            <div class="d-grid d-sm-flex gap-3">
+                                <a class="btn btn-primary btn-transition px-6" href="#features">Get started</a>
+                                <a class="btn btn-link" href="#news">Learn more <i
+                                        class="bi-chevron-right small ms-1"></i></a>
+                            </div>
+                        </div>
+                        <!-- End Col -->
                     </div>
+                    <!-- End Row -->
                 </div>
+                <!-- End Title & Description -->
+
+                <!-- SVG Shape -->
+                <div class="col-lg-7 col-xl-6 d-none d-lg-block position-absolute top-0 end-0 pe-0"
+                    style="margin-top: 6.75rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1137.5 979.2">
+                        <path fill="#F9FBFF" d="M565.5,957.4c81.1-7.4,155.5-49.3,202.4-115.7C840,739.8,857,570,510.7,348.3C-35.5-1.5-4.2,340.3,2.7,389
+                              c0.7,4.7,1.2,9.5,1.7,14.2l29.3,321c14,154.2,150.6,267.8,304.9,253.8L565.5,957.4z" />
+                        <defs>
+                            <path id="mainHeroSVG1"
+                                d="M1137.5,0H450.4l-278,279.7C22.4,430.6,24.3,675,176.8,823.5l0,0C316.9,960,537.7,968.7,688.2,843.6l449.3-373.4V0z" />
+                        </defs>
+                        <clipPath id="mainHeroSVG2">
+                            <use xlink:href="#mainHeroSVG1" />
+                        </clipPath>
+                        <g transform="matrix(1 0 0 1 0 0)" clip-path="url(#mainHeroSVG2)">
+                            <image width="750" height="750" xlink:href="assets/img/750x750/img2.jpg"
+                                transform="matrix(1.4462 0 0 1.4448 52.8755 0)"></image>
+                        </g>
+                    </svg>
+                </div>
+                <!-- End SVG Shape -->
             </div>
         </div>
-        {{-- content-client-top::end --}}
-        {{-- container-content-first::start --}}
-        <div class="container content-space-2 content-space-lg-3">
-            <div class="row justify-content-lg-between align-items-lg-center">
-                <div class="col-lg-5 mb-9 mb-lg-0">
-                    <div class="mb-3">
-                        <h2 class="h1">{{ $content['container-content-first']['title'] }}</h2>
-                    </div>
-                    <p>{{ $content['container-content-first']['paragraph'] }}</p>
-                    <p>{{ $content['container-content-first']['description'] }}</p>
-                    <div class="mt-4">
-                        <a class="btn btn-primary btn-transition px-5"
-                            href="{{ $content['container-content-first']['btn-link'] }}">Start Now</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-xl-5">
-                    <div class="position-relative mx-auto" style="max-width: 28rem; min-height: 30rem;">
-                        <figure class="position-absolute top-0 end-0 zi-2 me-10" data-aos="fade-up">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 450 450" width="165"
-                                height="165">
-                                <g>
-                                    <defs>
-                                        <path id="circleImgID2" d="M225,448.7L225,448.7C101.4,448.7,1.3,348.5,1.3,225l0,0C1.2,101.4,101.4,1.3,225,1.3l0,0
-                                        c123.6,0,223.7,100.2,223.7,223.7l0,0C448.7,348.6,348.5,448.7,225,448.7z" />
-                                    </defs>
-                                    <clipPath id="circleImgID1">
-                                        <use xlink:href="#circleImgID2" />
-                                    </clipPath>
-                                    <g clip-path="url(#circleImgID1)">
-                                        <image width="450" height="450"
-                                            xlink:href="{{ asset('storage/' . $content['container-content-first']['figure']['image_first']) }}">
-                                        </image>
-                                    </g>
-                                </g>
-                            </svg>
-                        </figure>
-                        <figure class="position-absolute top-0 start-0" data-aos="fade-up" data-aos-delay="300">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 335.2 335.2" width="120"
-                                height="120">
-                                <circle fill="none" stroke="#377dff" stroke-width="75" cx="167.6" cy="167.6"
-                                    r="130.1" />
-                            </svg>
-                        </figure>
-                        <figure class="d-none d-sm-block position-absolute top-0 start-0 mt-10" data-aos="fade-up"
-                            data-aos-delay="200">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 515 515" width="200"
-                                height="200">
-                                <g>
-                                    <defs>
-                                        <path id="circleImgID4" d="M260,515h-5C114.2,515,0,400.8,0,260v-5C0,114.2,114.2,0,255,0h5c140.8,0,255,114.2,255,255v5
-                                        C515,400.9,400.8,515,260,515z" />
-                                    </defs>
-                                    <clipPath id="circleImgID3">
-                                        <use xlink:href="#circleImgID4" />
-                                    </clipPath>
-                                    <g clip-path="url(#circleImgID3)">
-                                        <image width="515" height="515"
-                                            xlink:href="{{ asset('storage/' . $content['container-content-first']['figure']['image_second']) }}"
-                                            transform="matrix(1 0 0 1 1.639390e-02 2.880859e-02)"></image>
-                                    </g>
-                                </g>
-                            </svg>
-                        </figure>
-                        <figure class="position-absolute top-0 end-0" style="margin-top: 11rem; margin-right: 13rem;"
-                            data-aos="fade-up" data-aos-delay="250">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 67 67" width="25"
-                                height="25">
-                                <circle fill="#00C9A7" cx="33.5" cy="33.5" r="33.5" />
-                            </svg>
-                        </figure>
-                        <figure class="position-absolute top-0 end-0 me-3" style="margin-top: 8rem;" data-aos="fade-up"
-                            data-aos-delay="350">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 141 141" width="50"
-                                height="50">
-                                <circle fill="#FFC107" cx="70.5" cy="70.5" r="70.5" />
-                            </svg>
-                        </figure>
-                        <figure class="position-absolute bottom-0 end-0" data-aos="fade-up" data-aos-delay="400">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 770.4 770.4"
-                                width="280" height="280">
-                                <g>
-                                    <defs>
-                                        <path id="circleImgID6" d="M385.2,770.4L385.2,770.4c212.7,0,385.2-172.5,385.2-385.2l0,0C770.4,172.5,597.9,0,385.2,0l0,0
-                                        C172.5,0,0,172.5,0,385.2l0,0C0,597.9,172.4,770.4,385.2,770.4z" />
-                                    </defs>
-                                    <clipPath id="circleImgID5">
-                                        <use xlink:href="#circleImgID6" />
-                                    </clipPath>
-                                    <g clip-path="url(#circleImgID5)">
-                                        <image width="900" height="900"
-                                            xlink:href="{{ asset('storage/' . $content['container-content-first']['figure']['image_thirth']) }}"
-                                            transform="matrix(1 0 0 1 -64.8123 -64.8055)"></image>
-                                    </g>
-                                </g>
-                            </svg>
-                        </figure>
-                    </div>
-                </div>
+        <!-- End Hero -->
+
+        <!-- Card Grid -->
+        <div class="container content-space-2 content-space-t-xl-3 content-space-b-lg-3">
+            <!-- Heading -->
+            <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
+                <h2>How make your product.</h2>
             </div>
-        </div>
-        {{-- container-content-first::end --}}
-        {{-- container-content-second::start --}}
-        <div class="container content-space-t-2 content-space-t-lg-3">
-            <div class="row justify-content-lg-center">
-                @foreach ($content['container-content-second'] ?? [] as $k)
-                    <div class="col-md-6 col-lg-5 mb-3 mb-md-7">
-                        <div class="d-flex pe-lg-5" data-aos="fade-up">
-                            <div class="flex-shrink-0">
-                                <span class="svg-icon text-primary">
-                                    <img src="{{ asset('storage/' . $k['svg']) }}" alt="" width="70"
-                                        height="70" />
-                                </span>
+            <!-- End Heading -->
+
+            <!-- list-inline -->
+            <div class="text-center mb-10">
+                <ul class="list-inline list-checked list-checked-primary">
+                    @foreach ($content['card-grid']['list-inline'] as $k)
+                        <li class="list-inline-item list-checked-item">{{ ucfirst($k) }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <!-- End list-inline -->
+
+            <!-- Row -->
+            <div class="row mb-5 mb-md-5 d-flex justify-content-center">
+                @foreach ($content['card-grid']['row'] as $k)
+                    <div class="col-sm-6 col-lg-4 mt-3">
+                        <div class="card card-sm h-100">
+                            <div class="p-2">
+                                <img class="card-img" src="{{ $k['cover'] }}" alt="Image Description">
                             </div>
-                            <div class="flex-grow-1 ms-4">
-                                <h4>{{ $k['title'] }}</h4>
-                                <p>{{ $k['description'] }}</p>
+
+                            <div class="card-body">
+                                <h4 class="card-title">{{ ucfirst($k['title']) }}</h4>
+                                <p class="card-text">{{ ucfirst($k['desc']) }}</p>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
+            <!-- End Row -->
         </div>
-        {{-- container-content-second::end --}}
-        {{-- container-content-thirth::start --}}
-        <div class="container content-space-2 content-space-lg-3">
-            <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5 mb-md-9">
-                <h2 class="h1">{{ $content['container-content-thirth']['title'] }}</h2>
-                <p>{{ $content['container-content-thirth']['description'] }}</p>
+        <!-- End Card Grid -->
+
+        <!-- Features -->
+        <div class="position-relative bg-light rounded-2 mx-3 mx-lg-10" id="features">
+            <div class="container content-space-2 content-space-lg-3">
+                <!-- Heading -->
+                <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
+                    <h2>{{ ucfirst($content['features']['heading']['title']) }}</h2>
+                    <p>{{ ucfirst($content['features']['heading']['desc']) }}</p>
+                </div>
+                <!-- End Heading -->
+
+                <div class="text-center mb-10">
+                    <!-- List Checked -->
+                    <ul class="list-inline list-checked list-checked-primary">
+                        @foreach ($content['features']['list-checked'] as $k)
+                            <li class="list-inline-item list-checked-item">{{ ucfirst($k) }}</li>
+                        @endforeach
+                    </ul>
+                    <!-- End List Checked -->
+                </div>
+                
+                <!-- Row -->
+                <div class="row">
+                    <!-- Col 1 -->
+                    <div class="col-lg-7 mb-9 mb-lg-0">
+                        <div class="pe-lg-6">
+                            <!-- Browser Device -->
+                            <figure class="device-browser">
+                                <div class="device-browser-header">
+                                    <div class="device-browser-header-btn-list">
+                                        <span class="device-browser-header-btn-list-btn"></span>
+                                        <span class="device-browser-header-btn-list-btn"></span>
+                                        <span class="device-browser-header-btn-list-btn"></span>
+                                    </div>
+                                    <div class="device-browser-header-browser-bar">sinergiabadisentosa.com</div>
+                                </div>
+
+                                <div class="device-browser-frame">
+                                    <img class="device-browser-img" src="{{ $content['features']['row']['col-1']['img-browser-devices'] }}"
+                                        alt="Image Description">
+                                </div>
+                            </figure>
+                            <!-- End Browser Device -->
+                        </div>
+                    </div>
+                    <!-- End Col 1-->
+                    <!-- Col 2 -->
+                    <div class="col-lg-5">
+                        <!-- Heading -->
+                        <div class="mb-4">
+                            <h2>{{ ucfirst($content["features"]["row"]["col-2"]["heading"]["title"]) }}</h2>
+                            <p>{{ ucfirst($content["features"]["row"]["col-2"]["heading"]["desc"]) }}</p>
+                        </div>
+                        <!-- End Heading -->
+
+                        <!-- List Checked -->
+                        <ul class="list-checked list-checked-primary mb-5">
+                            @foreach ($content["features"]["row"]["col-2"]["list-checked"] as $k)
+                            <li class="list-checked-item">{{ ucfirst($k) }}</li>
+                            @endforeach
+                        </ul>
+                        <!-- End List Checked -->
+                    </div>
+                    <!-- End Col 2-->
+                </div>
+                <!-- End Row -->
             </div>
-            <div class="row gx-3 mb-5 mb-md-9">
-                @if (!is_null($products))
-                    @foreach ($products as $k => $v)
-                        <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-                            <a class="card card-transition h-100"
-                                href="{{ route('product.show', Str::slug($v->title)) }}">
-                                <img class="card-img-top" src="{{ asset('storage/' . $v->image) }}"
-                                    alt="Image Description">
+        </div>
+        <!-- End Features -->
+
+        <!-- work-flow -->
+        <div class="container content-space-2 content-space-lg-3">
+            <div class="row align-items-md-center">
+                <img class="img-fluid rounded-2" src="{{ $content['work-flow'] }}"
+                    alt="Image Description">
+            </div>
+        </div>
+        <!-- End work-flow -->
+
+        <!-- Stats -->
+        <div class="bg-light rounded-2 mx-3 mx-lg-10">
+            <div class="container content-space-2">
+                <div class="row justify-content-center">
+                    @foreach ($content["stats"] as $k)
+                        <!-- Col -->
+                    <div class="col-sm-6 col-md-4 mb-7 mb-md-0">
+                        <!-- Stats -->
+                        <div class="text-center">
+                            <h2 class="display-4"><i class="{{ $k['iclass'] }}"></i>{{ $k['title'] }}</h2>
+                            <p class="mb-0">{{ $k['desc'] }}</p>
+                        </div>
+                        <!-- End Stats -->
+                    </div>
+                    <!-- End Col -->
+                    @endforeach
+                </div>
+                <!-- End Row -->
+            </div>
+        </div>
+        <!-- End Stats -->
+
+        <!-- Card Content -->
+        <div class="container content-space-2 content-space-lg-3" id="news">
+            <!-- Heading -->
+            <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-5">
+                <h2>{{ ucfirst($content['card-content']['title']) }}</h2>
+            </div>
+            <!-- End Heading -->
+
+            <div class="overflow-hidden">
+                <div class="row gx-lg-7">
+                    @foreach ($content['card-content']['product'] ?? [] as $k => $v)
+                        {{-- {{ dd($v) }} --}}
+                        <div class="col-sm-6 col-lg-4 mb-5">
+                            <a class="card card-flush h-100" href="{{ route('product.show', $v->slug) }}"
+                                data-aos="fade-up">
+                                <img class="card-img" src="{{ asset('storage/' . $v->image) }}" alt="Image Description">
                                 <div class="card-body">
-                                    <span class="card-subtitle text-primary">{{ ucfirst($v->category) }}</span>
-                                    <h5 class="card-text lh-base">{{ ucfirst(Str::limit($v->title, 20)) }}</h5>
+                                    <span class="card-subtitle text-body">Read the article</span>
+                                    <h4 class="card-title text-inherit">{{ Str::limit(ucfirst($v->title), 20) }}</h4>
+                                    <p class="card-text text-body">{{ Str::limit($v->description, 70) }}</p>
                                 </div>
                             </a>
                         </div>
                     @endforeach
-                @endif
+                </div>
+                <!-- End Row -->
             </div>
+
+            <!-- Card Info -->
             <div class="text-center">
                 <div class="card card-info-link card-sm">
-                    <div class="card-body">Want to read more?
-                        <a class="card-link ms-2" href="{{ $content['container-content-thirth']['btn-link'] }}">Go here
-                            <span class="bi-chevron-right small ms-1"></span></a>
+                    <div class="card-body">
+                       {{ ucfirst($content['card-content']['card']['text-line']) }} <a class="card-link ms-2" href="{{ $content['card-content']['card']['btn-link'] }}">{{ ucfirst($content['card-content']['card']['text-btn']) }} <span
+                                class="bi-chevron-right small ms-1"></span></a>
                     </div>
                 </div>
             </div>
+            <!-- End Card Info -->
         </div>
-        {{-- container-content-thirth::end --}}
-        {{-- container-content-fiveth::start --}}
-        <div class="container content-space-2 content-space-b-lg-3">
-            <div class="w-md-75 w-lg-50 text-center mx-md-auto mb-6">
-                <h2>{{ $content['container-content-fourth']['title'] }}</h2>
-            </div>
-            <div class="row justify-content-center text-center">
-                @foreach ($content['container-content-fourth']['img-client'] ?? [] as $k)
-                    <div class="col-4 col-sm-3 col-md-2 py-3">
-                        <img class="avatar avatar-lg avatar-4x3 avatar-centered" src="{{ asset('storage/' . $k) }}"
-                            alt="Logo">
-                    </div>
-                @endforeach
-            </div>
-        </div>
-        {{-- container-content-fiveth::end --}}
+        <!-- End Card Content -->
     </main>
 @endsection

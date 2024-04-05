@@ -16,17 +16,30 @@ class Services extends Controller
     {
         $superiority = Superiority::all();
         $product = Product::all();
+        // dd($product, $superiority);
         $content=[
-            "page-title"=>$this->contentjson()["page-services"]["title-page"],
-            "page-keywords"=>$this->contentjson()["page-services"]["keywords-seo"],
-            "page-description"=>$this->contentjson()["page-services"]["description-seo"],
+            "page-title"=>"Services",
+            "page-keywords"=>"",
+            "page-description"=>"",
             "header"=>$this->header(),
             "footer"=>$this->footer(),
-            "gallery"=>$this->contentjson()["page-services"]["gallery"],
-            "icon-blocks"=>$this->contentjson()["page-services"]["icon-blocks"],
-            "clients"=>$this->contentjson()["page-services"]["clients"],
+            "gallery"=>[
+                "title"=> "Design-led and user-centric strategies can impact people's life.",
+                "img-1"=> asset('content-page/services/img-1.jpg'),
+                "img-2"=> asset('content-page/services/img-2.jpg'),
+            ],
+            "icon-blocks"=>[
+                "text-cap"=> "What we do",
+                "h2-title"=> "Since 2023, we have helped 25 companies launch over 1k incredible products"
+            ],
+            "clients"=>[
+                "title"=> "As seen on...",
+                "img-client"=> []
+            ],
+            "product"=>$product,
+            "superiority"=>$superiority,
         ];
-        return view("services", compact('content','product','superiority'));
+        return view("services", compact('content'));
     }
 
     /**

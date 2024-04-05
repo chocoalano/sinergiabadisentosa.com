@@ -4,7 +4,7 @@
         <div class="col-lg-3 mb-7 mb-lg-0">
           <div class="mb-5">
             <a class="navbar-brand" href="index.html" aria-label="Space">
-              <img class="navbar-brand-logo" src="{{ $content['footer']['logo'] }}" alt="Image Description">
+              <img class="navbar-brand-logo" src="{{ asset('pt-sinergi-abadi-sentosa.png') }}" alt="Image Description">
             </a>
           </div>
           <ul class="list-unstyled list-py-1">

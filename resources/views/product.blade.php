@@ -38,7 +38,7 @@
             <div class="col-md-5 mb-5 mb-md-0">
                 <div class="d-md-flex align-items-md-center text-center text-md-start">
                     <span class="d-block me-md-3 mb-2 mb-md-1">Categories:</span>
-                    @foreach ($category as $k => $v)
+                    @foreach ($content["category"] ?? [] as $k => $v)
                         <a class="btn btn-soft-secondary btn-xs rounded-pill m-1" href="#">{{ $v->category }}</a>
                     @endforeach
                 </div>
@@ -55,7 +55,7 @@
         </div>
 
         <div class="row mb-7">
-            @foreach ($product as $k => $v)
+            @foreach ($content["product"] ?? [] as $k => $v)
             <div class="col-sm-6 col-lg-4 mb-4">
                 <div class="card h-100">
                     <div class="shape-container">
@@ -89,7 +89,7 @@
         <!-- End Row -->
 
         <!-- Pagination -->
-        {!! $product->links() !!}
+        {!! $content["product"]->links() !!}
         <!-- End Pagination -->
     </div>
 </main>

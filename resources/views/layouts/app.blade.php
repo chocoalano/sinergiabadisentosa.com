@@ -7,11 +7,13 @@
         <Meta Content=@yield('content-keyword') Name='Keywords'/>
         <title>@yield('title')</title>
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+        <!-- Font -->
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('assets/css/vendor.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-icons/font/bootstrap-icons.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/vendor/aos/dist/aos.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/theme-style.css?v=1.0') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/theme.minc619.css?v=1.0') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         @yield('css')
       </head>
     <body>

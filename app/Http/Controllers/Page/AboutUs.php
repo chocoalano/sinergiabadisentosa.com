@@ -12,14 +12,26 @@ class AboutUs extends Controller
     public function index()
     {
         $content=[
-            "page-title"=>$this->contentjson()["page-about"]["title-page"],
-            "page-keywords"=>$this->contentjson()["page-about"]["keywords-seo"],
-            "page-description"=>$this->contentjson()["page-about"]["description-seo"],
+            "page-title"=>"PT. Sinergi Abadi Sentosa",
+            "page-keywords"=>"",
+            "page-description"=>"",
             "header"=>$this->header(),
             "footer"=>$this->footer(),
-            "gallery"=>$this->contentjson()["page-about"]["gallery"],
-            "feature"=>$this->contentjson()["page-about"]["feature"],
-            "info"=>$this->contentjson()["page-about"]["info"]
+            "gallery"=>[
+                "title"=> "About Us",
+                "desc"=> "Looking for a stunning packaging solution for your products? PT. Sinergi Abadi Sentosa is the answer! We are a trusted partner in creating packaging that attracts attention and increases the value of your products.",
+                "row-image"=> [asset("content-page/about/about-company-1.jpg"),asset("content-page/about/about-company-2.jpg"),asset("content-page/about/about-company-3.jpg")],
+            ],
+            "features"=>[
+                [
+                    'value'=> '47%',
+                    'title'=> 'Happy Clients',
+                ],
+                [
+                    'value'=> '47%',
+                    'title'=> 'Customer trust',
+                ]
+            ]
         ];
         return view("about", compact('content'));
     }

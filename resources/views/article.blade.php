@@ -38,7 +38,7 @@
                 <div class="col-md-5 mb-5 mb-md-0">
                     <div class="d-md-flex align-items-md-center text-center text-md-start">
                         <span class="d-block me-md-3 mb-2 mb-md-1">Tags:</span>
-                        @foreach ($tags as $k => $v)
+                        @foreach ($content['tags'] ?? [] as $k => $v)
                             <a class="btn btn-soft-secondary btn-xs rounded-pill m-1"
                                 href="{{ route('article.index', ['search'=>$v->name]) }}">{{ $v->name }}</a>
                         @endforeach
@@ -58,7 +58,7 @@
                 <div class="row gx-0">
                     <div class="col-lg-8">
                         <div class="shape-container overflow-hidden">
-                            <img class="card-img" src="{{ asset('storage/'.$newarticles->cover) }}" alt="Image Description">
+                            <img class="card-img" src="{{ asset('storage/'.$content['newarticles']->cover) }}" alt="Image Description">
                             <div class="shape shape-end d-none d-lg-block zi-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 100.1 1920"
                                     height="101%">
@@ -76,15 +76,15 @@
                         <div class="card-body">
                             <h3 class="card-title">
                                 <a class="text-dark"
-                                    href="{{ route('article.show', $newarticles->slug) }}">{{ ucfirst($newarticles->title) }}</a>
+                                    href="{{ route('article.show', $content['newarticles']->slug) }}">{{ ucfirst($content['newarticles']->title) }}</a>
                             </h3>
-                            <div class="card-text">{!! ucfirst(Str::limit($newarticles->content, 300)) !!}</div>
+                            <div class="card-text">{!! ucfirst(Str::limit($content['newarticles']->content, 300)) !!}</div>
                             <div class="card-footer">
                                 <div class="d-flex align-items-center">
                                     <div class="flex-grow-1">
                                         <div class="d-flex justify-content-end">
                                             <p class="card-text">
-                                                {{ \Carbon\Carbon::parse($newarticles->created_at)->format('d/m/Y') }}
+                                                {{ \Carbon\Carbon::parse($content['newarticles']->created_at)->format('d/m/Y') }}
                                             </p>
                                         </div>
                                     </div>
@@ -96,7 +96,7 @@
             </div>
 
             <div class="row mb-7">
-                @foreach ($articles as $k => $v)
+                @foreach ($content['articles'] ?? [] as $k => $v)
                     @if (!is_null($v->cover))
                         <div class="col-sm-6 col-lg-4 mb-4">
                             <div class="card h-100">
@@ -154,7 +154,7 @@
             <!-- End Row -->
 
             <!-- Pagination -->
-            {!! $articles->links() !!}
+            {!! $content['articles']->links() !!}
             <!-- End Pagination -->
         </div>
     </main>

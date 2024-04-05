@@ -54,11 +54,11 @@
             </div>
             <div class="row gx-3 gx-lg-4">
                 <div class="col-5 align-self-end">
-                    <img class="img-fluid rounded-2" src="{{ asset('storage/'.$content['gallery']['image-1']) }}" alt="Image Description">
+                    <img class="img-fluid rounded-2" src="{{ $content['gallery']['img-1'] }}" alt="Image Description">
                 </div>
                 <div class="col-7">
                     <div class="ms-lg-4">
-                        <img class="img-fluid rounded-2" src="{{ asset('storage/'.$content['gallery']['image-2']) }}" alt="Image Description">
+                        <img class="img-fluid rounded-2" src="{{ $content['gallery']['img-2'] }}" alt="Image Description">
                     </div>
                 </div>
             </div>
@@ -72,17 +72,17 @@
                 <h2>{{ ucfirst($content['icon-blocks']['h2-title']) }}</h2>
             </div>
             <div class="row justify-content-lg-center">
-                @foreach ($superiority as $k => $V)
+                @foreach ($content['superiority'] ?? [] as $k => $v)
                     <div class="col-md-6 col-lg-5 mb-3 mb-md-5 mb-lg-7">
                         <div class="d-flex pe-md-5">
                             <div class="flex-shrink-0">
                                 <div class="svg-icon text-primary">
-                                    {!! $V->svg !!}
+                                    {!! $v->svg !!}
                                 </div>
                             </div>
                             <div class="flex-grow-1 ms-3">
-                                <h4>{{ ucfirst($V->title) }}</h4>
-                                <p>{{ ucfirst($V->description) }}</p>
+                                <h4>{{ ucfirst($v->title) }}</h4>
+                                <p>{{ ucfirst($v->description) }}</p>
                             </div>
                         </div>
                     </div>
@@ -95,9 +95,10 @@
         <div class="mx-3 mb-10">
             <div class="js-swiper-gallery swiper">
                 <div class="swiper-wrapper">
-                    @foreach ($product as $k => $v)
+                    @foreach ($content['product'] ?? [] as $k => $v)
+                    {{-- {{ dd($v) }} --}}
                         <div class="swiper-slide rounded-2 bg-img-start" style="background-image: url({{ asset('storage/'.$v->image) }}); min-height: 20rem;">
-                            <img class="d-none" src="{{ asset('storage/'.$v->image) }}" alt="Image Description">
+                            <img class="d-none" src="{{ asset('storage/'.$v->image) }}" alt="{{ $v->description }}">
                         </div>
                     @endforeach
                 </div>

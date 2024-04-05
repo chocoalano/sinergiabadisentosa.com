@@ -27,23 +27,19 @@ class AppServiceProvider extends ServiceProvider
                 NavigationGroup::make()
                     ->label('Config Application')
                     ->icon('heroicon-s-wrench-screwdriver')
-                    ->collapsed(),
+                    ->collapsed(true),
                 NavigationGroup::make()
                     ->label('Master Data')
                     ->icon('heroicon-s-table-cells')
-                    ->collapsed(),
+                    ->collapsed(true),
                 NavigationGroup::make()
                     ->label('Blogs')
                     ->icon('heroicon-s-arrow-up-on-square-stack')
-                    ->collapsed(),
+                    ->collapsed(true),
                 NavigationGroup::make()
                     ->label('Services')
                     ->icon('heroicon-s-check-badge')
-                    ->collapsed(),
-                NavigationGroup::make()
-                    ->label('Site Settings')
-                    ->icon('fas-gear')
-                    ->collapsed(),
+                    ->collapsed(true),
             ]);
         });
         Paginator::defaultView('vendor.pagination.bootstrap-5');

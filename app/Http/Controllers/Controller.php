@@ -24,18 +24,46 @@ class Controller extends BaseController
                 [
                     "name"=>"Home",
                     "link"=>route('home.index'),
+                    "child-menu"=>[
+                        [
+                            "name"=>"Our Product",
+                            "link"=>route('home.index'),
+                        ]
+                    ]
                 ],
                 [
                     "name"=>"About Us",
                     "link"=>route('about.index'),
+                    "child-menu"=>[
+                        [
+                            "name"=>"Short Story",
+                            "link"=>route('home.index'),
+                        ]
+                    ]
                 ],
                 [
                     "name"=>"Services",
                     "link"=>route('services.index'),
+                    "child-menu"=>[
+                        [
+                            "name"=>"Our Product",
+                            "link"=>route('home.index'),
+                        ]
+                    ]
                 ],
                 [
-                    "name"=>"Article",
+                    "name"=>"News",
                     "link"=>route('article.index'),
+                    "child-menu"=>[
+                        [
+                            "name"=>"News Products",
+                            "link"=>route('home.index'),
+                        ],
+                        [
+                            "name"=>"News Customers",
+                            "link"=>route('home.index'),
+                        ]
+                    ]
                 ]
             ]
         ];
