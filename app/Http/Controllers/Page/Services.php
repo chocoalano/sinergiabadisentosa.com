@@ -25,8 +25,8 @@ class Services extends Controller
             "footer"=>$this->footer(),
             "gallery"=>[
                 "title"=> "Design-led and user-centric strategies can impact people's life.",
-                "img-1"=> asset('content-page/services/img-1.jpg'),
-                "img-2"=> asset('content-page/services/img-2.jpg'),
+                "img-1"=> asset('content-page/services/img-1_small.jpg'),
+                "img-2"=> asset('content-page/services/img-2_small.jpg'),
             ],
             "icon-blocks"=>[
                 "text-cap"=> "What we do",

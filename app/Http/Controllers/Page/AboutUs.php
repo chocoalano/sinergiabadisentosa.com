@@ -20,7 +20,7 @@ class AboutUs extends Controller
             "gallery"=>[
                 "title"=> "About Us",
                 "desc"=> "Looking for a stunning packaging solution for your products? PT. Sinergi Abadi Sentosa is the answer! We are a trusted partner in creating packaging that attracts attention and increases the value of your products.",
-                "row-image"=> [asset("content-page/about/about-company-1.jpg"),asset("content-page/about/about-company-2.jpg"),asset("content-page/about/about-company-3.jpg")],
+                "row-image"=> [asset("content-page/about/about-company-1_small.jpg"),asset("content-page/about/about-company-2_small.jpg"),asset("content-page/about/about-company-3_small.jpg")],
             ],
             "features"=>[
                 [

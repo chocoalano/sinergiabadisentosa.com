@@ -24,27 +24,27 @@ class Welcome extends Controller
                 "list-inline"=> ["Asynchronous collaboration", "Updates and announcements", "Training and team building"],
                 "row"=> [
                     [
-                        'cover' => 'content-page/home/fiber.jpg',
+                        'cover' => 'content-page/home/fiber_small.jpg',
                         'title' => 'Fiber powder drink',
                         'desc' => 'Fiber powder drinks fall into the category of dietary supplements designed to increase fiber intake easily and efficiently.',
                     ],
                     [
-                        'cover' => 'content-page/home/collagen.jpg',
+                        'cover' => 'content-page/home/collagen_small.jpg',
                         'title' => 'Collagen powder drink',
                         'desc' => 'Collagen powder drinks belong to the category of dietary supplements designed to promote skin, joint, and overall health by providing collagen, a protein found in the body. ',
                     ],
                     [
-                        'cover' => 'content-page/home/gandum.jpg',
+                        'cover' => 'content-page/home/gandum_small.jpg',
                         'title' => 'Meal replacement powder drink',
                         'desc' => 'Meal replacement powder drinks belong to the category of dietary supplements designed to provide a convenient and nutritionally balanced alternative to traditional meals. ',
                     ],
                     [
-                        'cover' => 'content-page/home/protein.jpg',
+                        'cover' => 'content-page/home/protein_small.jpg',
                         'title' => 'Sports Food',
                         'desc' => 'The sports food category encompasses a wide range of products designed to fuel athletes and active individuals before, during, and after physical activity.',
                     ],
                     [
-                        'cover' => 'content-page/home/milk.jpg',
+                        'cover' => 'content-page/home/milk_small.jpg',
                         'title' => "Pregnant & breastfeeding mother's milk",
                         'desc' => 'Front App is an easier way to search on Android.',
                     ],
@@ -58,7 +58,7 @@ class Welcome extends Controller
                 "list-checked"=> ["Satisfaction", "Security", "Continuity"],
                 "row"=>[
                     "col-1"=>[
-                        "img-browser-devices"=> asset("content-page/home/business.jpg"),
+                        "img-browser-devices"=> asset("content-page/home/business_small.jpg"),
                     ],
                     "col-2"=>[
                         "heading"=>[
