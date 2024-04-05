@@ -68,9 +68,9 @@
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">
-                            <a class="text-dark" href="{{ route('product.show', $v->slug) }}">{{ ucfirst($v->title) }}</a>
+                            <a class="text-dark" href="{{ route('product.show', $v->slug) }}">{{ ucfirst(Str::limit($v->title, 30)) }}</a>
                         </h3>
-                        <div class="card-text">{{ ucfirst(Str::limit($v->description, 300)) }}</div>
+                        <div class="card-text">{{ ucfirst(Str::limit($v->description, 100)) }}</div>
                     </div>
                     <div class="card-footer">
                         <div class="d-flex align-items-center">
