@@ -25,7 +25,7 @@ class PostResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make([
-                    Forms\Components\FileUpload::make('cover')->columnSpan('full'),
+                    Forms\Components\FileUpload::make('cover')->columnSpan('full')->directory('article'),
                     Forms\Components\TextInput::make('keywords')->required(),
                     Forms\Components\TextInput::make('title')->required()->columnSpan(2),
                     Forms\Components\Textarea::make('description')->required()->columnSpan('full'),
