@@ -46,7 +46,7 @@ class Welcome extends Controller
                     [
                         'cover' => 'content-page/home/milk_small.jpg',
                         'title' => "Pregnant & breastfeeding mother's milk",
-                        'desc' => 'Front App is an easier way to search on Android.',
+                        'desc' => 'Welcome to our exclusive product category, "Pregnant & Breastfeeding Mothers Milk", which is specially produced by our experienced manufacturers. We understand how important the health of mothers and babies is during pregnancy and breastfeeding.',
                     ],
                 ]
             ],
