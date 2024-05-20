@@ -69,7 +69,7 @@ class Welcome extends Controller
                     ],
                 ]
             ],
-            "work-flow"=>asset('content-page/home/working-flow-01-new.svg'),
+            "work-flow"=>asset('content-page/home/Working Flow 2 rev-01.jpg'),
             'stats'=>[
                 [
                     'title'=> '47%',
