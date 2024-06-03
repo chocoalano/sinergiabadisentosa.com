@@ -9,7 +9,8 @@
           </div>
           <ul class="list-unstyled list-py-1">
             <li><a class="link-sm link-light" href="#"><i class="bi-geo-alt-fill me-1"></i> {{ $content['footer']['address'] }}</a></li>
-            <li><a class="link-sm link-light" href="tel:1-062-109-9222"><i class="bi-telephone-inbound-fill me-1"></i>{{ $content['footer']['phone'] }}</a></li>
+            <li><a class="link-sm link-light" href="tel:{{ $content['footer']['phone'] }}"><i class="bi-telephone-inbound-fill me-1"></i>{{ $content['footer']['phone'] }}</a></li>
+            <li><a class="link-sm link-light" href="whatsapp://send?abid={{ $content['footer']['wa'] }}&text=Hello%2C%20World!"><i class="bi-whatsapp me-1"></i>{{ $content['footer']['wa'] }}</a></li>
           </ul>
         </div>
         @foreach ($content['footer']['menu'] as $k)

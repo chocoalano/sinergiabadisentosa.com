@@ -89,6 +89,7 @@ class Controller extends BaseController
             "logo"=>asset($this->contentjson()["config"]["footer"]["logo"]),
             "address"=>$this->contentjson()["config"]["footer"]["address"],
             "phone"=>$this->contentjson()["config"]["footer"]["phone"],
+            "wa"=>$this->contentjson()["config"]["footer"]["wa"],
             "menu"=>[
                 [
                     "name-group"=>"Company",
